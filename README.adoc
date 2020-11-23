@@ -4,9 +4,13 @@
 
 Obtain an API key from link:https://openweathermap.org/price[OpenWeather], and update the .env file appropriately.
 
-Run the following to load up the environment variable and launch the server
+Run the following to load up the environment variable and launch the server.  +
+[NOTE]
+====
+Note that for the first line you don't just execute the `setup.sh` script, but rather _source_ it within your shell. Otherwise the environment variable is only set within the execution of the script, and not in the shell that called it.
+====
 
 ```shell
-./setup.sh
+. setup.sh
 ./mvnw spring-boot:run
 ```
