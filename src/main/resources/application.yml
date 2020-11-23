@@ -1,18 +1,4 @@
 myapp:
   openweather-api-key: ${OPEN_WEATHER_API_KEY}
-spring:
-  jpa:
-    hibernate.ddl-auto: update
-    show-sql: true
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:testdb/test
-    hikari:
-      driver-class-name: org.h2.Driver
-    initialization-mode: always
-    username: sa
-    password: sa
 server:
   port: 8080

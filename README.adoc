@@ -1,2 +1,12 @@
 = Travel Planner Server
 
+== Setup
+
+Obtain an API key from link:https://openweathermap.org/price[OpenWeather], and update the .env file appropriately.
+
+Run the following to load up the environment variable and launch the server
+
+```shell
+./setup.sh
+./mvnw spring-boot:run
+```
