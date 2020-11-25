@@ -25,10 +25,15 @@ public class OpenWeatherDeserializer extends StdDeserializer<OpenWeatherModel> {
    * Custom deserialize method to pull only the required information
    */
   @Override
-  public OpenWeatherModel deserialize(JsonParser jp, DeserializationContext ctx)
-      throws IOException {
+  public OpenWeatherModel deserialize(JsonParser jp, DeserializationContext ctx) {
 
-    JsonNode rawNode = jp.getCodec().readTree(jp);
+    JsonNode rawNode = null;
+
+    try {
+      rawNode = jp.getCodec().readTree(jp);
+    } catch (IOException e) {
+      return null;
+    }
     OpenWeatherModel model = new OpenWeatherModel();
 
     // Get top level basics
@@ -49,6 +54,7 @@ public class OpenWeatherDeserializer extends StdDeserializer<OpenWeatherModel> {
         details.setDescription(d.get("weather").get(0).get("description").textValue());
         details.setCloudiness(d.get("clouds").get("all").doubleValue());
         details.setTimestamp(d.get("dt_txt").textValue());
+        details.setEpoch(d.get("dt").longValue());
         model.addDetails(details);
       }
     });

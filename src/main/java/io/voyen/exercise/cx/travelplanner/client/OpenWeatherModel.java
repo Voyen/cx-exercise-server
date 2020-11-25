@@ -1,6 +1,7 @@
 package io.voyen.exercise.cx.travelplanner.client;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class OpenWeatherModel implements Serializable {
   private String name;
   private String country;
   private List<WeatherDetails> details;
+  private Instant cachedAt;
 
   public void addDetails(WeatherDetails detail) {
     if (details == null) {
@@ -35,6 +37,7 @@ public class OpenWeatherModel implements Serializable {
     private String description;
     private double cloudiness;
     private String timestamp;
+    private long epoch;
 
   }
 
