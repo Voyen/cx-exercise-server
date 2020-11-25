@@ -2,6 +2,7 @@ package io.voyen.exercise.cx.travelplanner.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,9 +14,7 @@ import io.voyen.exercise.cx.travelplanner.domain.Itinerary;
 import io.voyen.exercise.cx.travelplanner.service.ItineraryService;
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @RequestMapping("/saved")
 @RequiredArgsConstructor
@@ -36,6 +35,11 @@ public class ItineraryController {
   @PostMapping
   public Itinerary saveNew(@RequestBody Itinerary input) {
     return svc.save(input);
+  }
+
+  @DeleteMapping("/{id}")
+  public void deleteById(@PathVariable long id) {
+    svc.deleteById(id);
   }
   
 }

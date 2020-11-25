@@ -12,5 +12,7 @@ public interface ItineraryService {
   public Optional<Itinerary> getByName(String name);
 
   public Itinerary save(Itinerary itinerary);
+
+  public void deleteById(long id);
   
 }

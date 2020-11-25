@@ -30,4 +30,9 @@ public class ItineraryServiceImpl implements ItineraryService {
     return repo.save(itinerary);
   }
 
+  @Override
+  public void deleteById(long id) {
+    repo.deleteById(id);
+  }
+
 }
