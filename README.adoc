@@ -11,6 +11,5 @@ Note that for the first line you don't just execute the `setup.sh` script, but r
 ====
 
 ```shell
-. setup.sh
-./mvnw spring-boot:run
+./setup.sh start
 ```
