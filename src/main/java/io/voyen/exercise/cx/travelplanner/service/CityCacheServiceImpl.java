@@ -22,8 +22,10 @@ public class CityCacheServiceImpl implements CityCacheService {
   public City getWeatherByCityName(String name, boolean refresh) throws NotFoundException {
     if (!refresh) {
       var cached = repo.findByNameIgnoreCase(name);
-      if (cached.isPresent() && cached.get().getCachedAt().isAfter(Instant.now().minusSeconds(60L * 60))) {
-        return cached.get();
+      if (cached.isPresent()) {
+        if (cached.get().getCachedAt() != null && cached.get().getCachedAt().isAfter(Instant.now().minusSeconds(60L * 60))){
+          return cached.get();
+        }
       } 
     }
     
