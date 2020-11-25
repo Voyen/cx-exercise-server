@@ -21,7 +21,7 @@ public class DomainMapper {
 
     List<City.WeatherEntry> weatherEntries = new ArrayList<>();
     model.getDetails().stream().forEach(m -> {
-      var entry = new City.WeatherEntry();
+      City.WeatherEntry entry = new City.WeatherEntry();
       entry.setTemp(m.getTemp());
       entry.setDescription(m.getDescription());
       entry.setCloudiness(m.getCloudiness());
@@ -44,7 +44,7 @@ public class DomainMapper {
 
     List<OpenWeatherModel.WeatherDetails> details = new ArrayList<>();
     city.getWeatherEntries().stream().forEach(c -> {
-      var entry = new OpenWeatherModel.WeatherDetails();
+      OpenWeatherModel.WeatherDetails entry = new OpenWeatherModel.WeatherDetails();
       entry.setTemp(c.getTemp());
       entry.setDescription(c.getDescription());
       entry.setCloudiness(c.getCloudiness());

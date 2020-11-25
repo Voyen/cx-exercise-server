@@ -1,6 +1,7 @@
 package io.voyen.exercise.cx.travelplanner.service;
 
 import java.time.Instant;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,14 +22,14 @@ public class CityCacheServiceImpl implements CityCacheService {
   @Override
   public City getWeatherByCityName(String name, boolean refresh) throws NotFoundException {
     if (!refresh) {
-      var cached = repo.findByNameIgnoreCase(name);
+      Optional<City> cached = repo.findByNameIgnoreCase(name);
       if (cached.isPresent() && cached.get().getCachedAt() != null
           && cached.get().getCachedAt().isAfter(Instant.now().minusSeconds(60L * 60))) {
         return cached.get();
       }
     }
 
-    var live = DomainMapper.mapToCity(client.getWeatherByCity(name));
+    City live = DomainMapper.mapToCity(client.getWeatherByCity(name));
     repo.save(live);
 
     return live;
